@@ -35,23 +35,33 @@
 // export default App
 
 import { useState } from "react"
+import { NewMarkerForm } from "./NewMarkerForm"
 import "./styles.css"
 
 export default function App(){
 
-  const [newMarker, setNewMarker] = useState("") // [new elem,function called]
+  // const [newMarker, setNewMarker] = useState("") // [new elem,function called]
   const [markers, setMarkers]=useState([])
 
-  function handleSubmit(e){
-    e.preventDefault()
 
-    setMarkers((currentMarkers) => [
-        ...currentMarkers, 
-        {id: crypto.randomUUID(), title: newMarker, completed: false},
-      ]
-    );
+  // function handleSubmit(e){
+  //   e.preventDefault()
+
+  //   setMarkers((currentMarkers) => [
+  //       ...currentMarkers, 
+  //       {id: crypto.randomUUID(), title: newMarker, completed: false},
+  //     ]
+  //   );
     
-    setNewMarker("")
+  //   setNewMarker("")
+  // }
+
+  function addMarker(title){
+    setMarkers((currentMarkers) => [
+      ...currentMarkers, 
+      {id: crypto.randomUUID(), title , completed: false},
+    ]
+    );
   }
 
   function toggleMarker(id, completed) {
@@ -75,10 +85,9 @@ export default function App(){
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="new-marker-form">
+      {/* <form onSubmit={handleSubmit} className="new-marker-form">
         <div className="form-row">
           <h3 htmlFor="marker">New Marker</h3>
-          {/* marker's title input */}
           <label htmlFor="title">Title</label>
           <input 
             value={newMarker}
@@ -89,7 +98,9 @@ export default function App(){
           <br></br>
         </div>
         <button className="btn">Add+</button>
-      </form>
+      </form> */}
+
+      <NewMarkerForm onSubmit={addMarker}/>
 
       <h1 className="header">Markers</h1>
       <ul className="list">
@@ -114,6 +125,8 @@ export default function App(){
           )
         })}
       </ul>
+
+      {/* <MarkerList markers={markers}/> */}
     </>
   )
 }

@@ -1,4 +1,26 @@
-export function newMarkerForm(){
+import { useState } from "react"
+
+export function NewMarkerForm({ onSubmit }){
+
+    const [newMarker, setNewMarker] = useState("") // [new elem,function called]
+
+
+    function handleSubmit(e){
+        e.preventDefault()
+    
+        // setMarkers((currentMarkers) => [
+        //     ...currentMarkers, 
+        //     {id: crypto.randomUUID(), title: newMarker, completed: false},
+        //   ]
+        // );
+
+        if (newMarker === "") return
+
+        onSubmit(newMarker)
+        
+        setNewMarker("")
+    }
+
     return(
         <form onSubmit={handleSubmit} className="new-marker-form">
             <div className="form-row">
