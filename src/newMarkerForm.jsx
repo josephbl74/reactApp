@@ -7,12 +7,6 @@ export function NewMarkerForm({ onSubmit }){
 
     function handleSubmit(e){
         e.preventDefault()
-    
-        // setMarkers((currentMarkers) => [
-        //     ...currentMarkers, 
-        //     {id: crypto.randomUUID(), title: newMarker, completed: false},
-        //   ]
-        // );
 
         if (newMarker === "") return
 
@@ -31,7 +25,7 @@ export function NewMarkerForm({ onSubmit }){
                     value={newMarker}
                     onChange={e => setNewMarker(e.target.value)}
                     type="text"
-                    id="marker "
+                    id="marker"
                 />
                 <br></br>
             </div>
